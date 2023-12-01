@@ -7,14 +7,5 @@ dotenv.config({ path: path.join((process.cwd(), '.env')) });
 export default {
   port: process.env.PORT,
   database_url: process.env.DATABASE_URL,
+  bycrypt_salt_rounds: process.env.BCRYPT_SALT_ROUND,
 };
-
-// // Example config in server.ts
-// const config = {
-//   port: process.env.PORT || 5000,
-//   database_url:
-//     process.env.DATABASE_URL ||
-//     'mongodb+srv://admin:admin@cluster0.rp8qrq9.mongodb.net/?retryWrites=true&w=majority',
-// };
-
-///home/rakib/Documents/first-project
