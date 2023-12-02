@@ -39,6 +39,7 @@ const createStudent = async (req: Request, res: Response) => {
       message: 'createStudent is created successgully',
       data: result,
     });
+    // eslint-disable-next-line @typescript-eslint/no-explicit-any
   } catch (err: any) {
     res.status(500).json({
       success: false,
@@ -59,7 +60,7 @@ const getAllStudents = async (req: Request, res: Response) => {
       data: result,
     });
   } catch (error) {
-    console.log(error);
+    // console.log(error);
     res.status(500).json({
       success: false,
       message: 'getAllStudents is failed',
@@ -80,7 +81,7 @@ const getSingleStudents = async (req: Request, res: Response) => {
       data: result,
     });
   } catch (error) {
-    console.log(error);
+    // console.log(error);
     res.status(500).json({
       success: false,
       message: 'getSingleStudents is failed',
@@ -100,7 +101,7 @@ const deleteStudents = async (req: Request, res: Response) => {
       data: result,
     });
   } catch (error) {
-    console.log(error);
+    // console.log(error);
     res.status(500).json({
       success: false,
       message: 'getSingleStudents is failed',

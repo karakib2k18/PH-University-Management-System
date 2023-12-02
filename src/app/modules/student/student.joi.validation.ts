@@ -14,7 +14,7 @@ const UserNameValidationSchema = Joi.object({
     .max(20)
     .custom((value, helpers) => {
       if (!validator.isAlpha(value)) {
-        return helpers.message('must only contain alphabetical characters');
+        return helpers.message(must only contain alphabetical characters");
       }
       return value;
     })

@@ -177,7 +177,7 @@ studentSchema.virtual('FullName').get(function () {
   return `${this.name.firstName} ${this.name.middleName} ${this.name.lastName}`;
 });
 
-//pre save middleware/hook: will work on create on save function
+//Encrypt & pre save middleware/hook: will work on create on save function
 studentSchema.pre('save', async function (next) {
   // console.log('pre hook: we save our data', this);
 
@@ -198,19 +198,23 @@ studentSchema.post('save', function (doc, next) {
   next();
 });
 
-//query middleware
+//query find middleware
 studentSchema.pre('find', function (next) {
   // console.log('post hook: we save our data', this);
   this.find({ isDeleted: { $ne: true } });
 
   next();
 });
+
+//findOne
 studentSchema.pre('findOne', function (next) {
   // console.log('post hook: we save our data', this);
   this.find({ isDeleted: { $ne: true } });
 
   next();
 });
+
+//aggregate
 studentSchema.pre('aggregate', function (next) {
   // console.log('post hook: we save our data', this);
   this.pipeline().unshift({ $match: { isDeleted: { $ne: true } } });
