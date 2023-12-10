@@ -11,9 +11,7 @@ const app: Application = express();
 app.use(express.json());
 app.use(cors());
 
-//api/v1/student/create-student
-
-// application routes
+// all application routes
 app.use('/api/v1', router);
 
 const test = (req: Request, res: Response) => {
@@ -21,8 +19,6 @@ const test = (req: Request, res: Response) => {
 };
 
 app.get('/', test);
-
-// console.log(process.cwd());
 
 //global error handler
 app.use(globalErrorHandeler);
