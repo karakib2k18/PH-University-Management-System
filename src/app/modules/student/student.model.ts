@@ -8,8 +8,7 @@ import {
   StudentModel,
   TUserName,
 } from './student.interface';
-import bcrypt from 'bcrypt';
-import config from '../../config';
+
 
 // 2. Create a Schema corresponding to the document interface.
 
@@ -97,10 +96,16 @@ const studentSchema = new Schema<TStudent, StudentModel>(
       required: [true, 'ID is required'],
       unique: true,
     },
-    password: {
-      type: String,
-      required: [true, 'password is required'],
+    user: {
+      type: Schema.Types.ObjectId,
+      required: [true, 'USER Id is required'],
+      unique: true,
+      ref: 'User',
     },
+    // password: {
+    //   type: String,
+    //   required: [true, 'password is required'],
+    // },
     name: { type: UserNameSchema, required: [true, 'Name is required'] },
     gender: {
       type: String,
@@ -155,15 +160,15 @@ const studentSchema = new Schema<TStudent, StudentModel>(
     },
 
     profileImg: { type: String },
-    isActive: {
-      type: String,
-      enum: {
-        values: ['active', 'inactive'],
-        message: 'Invalid isActive status. Please provide a valid status.',
-      },
-      default: 'active',
-      required: [true, 'isActive status is required'],
-    },
+    // isActive: {
+    //   type: String,
+    //   enum: {
+    //     values: ['active', 'inactive'],
+    //     message: 'Invalid isActive status. Please provide a valid status.',
+    //   },
+    //   default: 'active',
+    //   required: [true, 'isActive status is required'],
+    // },
     isDeleted: {
       type: Boolean,
       default: false,
@@ -177,26 +182,7 @@ studentSchema.virtual('FullName').get(function () {
   return `${this.name.firstName} ${this.name.middleName} ${this.name.lastName}`;
 });
 
-//Encrypt & pre save middleware/hook: will work on create on save function
-studentSchema.pre('save', async function (next) {
-  // console.log('pre hook: we save our data', this);
 
-  //hashing password and save into DB
-  // eslint-disable-next-line @typescript-eslint/no-this-alias
-  const user = this; // documents
-  user.password = await bcrypt.hash(
-    user.password,
-    Number(config.bycrypt_salt_rounds),
-  );
-  next();
-});
-
-//post save middleware
-studentSchema.post('save', function (doc, next) {
-  doc.password = '';
-  // console.log('post hook: we save our data', this);
-  next();
-});
 
 //query find middleware
 studentSchema.pre('find', function (next) {

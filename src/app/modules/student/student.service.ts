@@ -1,27 +1,4 @@
-import { TStudent } from './student.interface';
 import { Student } from './student.model';
-
-const createStudentIntoDB = async (studentData: TStudent) => {
-  //   //built in static method
-  // const result = await Student.create(studentData);
-
-  /*
-  //static-instance method create
-  const student = new Student(studentData); // create an instance
-  if (await student.isUserExists(studentData.id)) {
-    throw new Error('user already registerd');
-  }
-  const result = await student.save(); //built in instance method
-  return result;
-  */
-
-  // 9-7 Implement a custom static method
-  if (await Student.isUserExists(studentData.id)) {
-    throw new Error('user already registerd');
-  }
-  const result = await Student.create(studentData);
-  return result;
-};
 
 const getAllStudentsFromBD = async () => {
   const result = await Student.find();
@@ -44,7 +21,6 @@ const deleteStudentsFromBD = async (id: string) => {
 };
 
 export const StudentServices = {
-  createStudentIntoDB,
   getAllStudentsFromBD,
   getSignleStudentsFromBD,
   deleteStudentsFromBD,

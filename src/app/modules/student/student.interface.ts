@@ -1,6 +1,4 @@
-// import { Schema, model, connect } from 'mongoose';
-
-import { Model } from 'mongoose';
+import { Model, Types } from 'mongoose';
 
 // 1. Create an interface representing a document in MongoDB.
 export type TUserName = {
@@ -28,7 +26,8 @@ export type TLocalGuardian = {
 // 1. Create an interface representing a document in MongoDB.
 export type TStudent = {
   id: string;
-  password: string;
+  user: Types.ObjectId;
+  // password: string;
   name: TUserName;
   gender: 'male' | 'female' | 'other';
   dateofBirth: string;
@@ -42,7 +41,7 @@ export type TStudent = {
   guardian: TGurdian;
   localguardin: TLocalGuardian;
   profileImg?: string;
-  isActive: 'active' | 'inactive';
+  // isActive: 'active' | 'inactive';
   isDeleted: boolean;
 };
 
