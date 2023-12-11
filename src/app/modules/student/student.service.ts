@@ -6,11 +6,6 @@ const getAllStudentsFromBD = async () => {
 };
 
 const getSignleStudentsFromBD = async (id: string) => {
-  // noramal system
-  // const result = await Student.findOne({ id });
-  // return result;
-
-  //aggregate system
   const result = await Student.aggregate([{ $match: { id: id } }]);
   return result;
 };
