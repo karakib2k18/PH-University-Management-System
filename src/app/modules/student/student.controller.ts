@@ -3,10 +3,6 @@ import { StudentServices } from './student.service';
 import sendResponse from '../../utils/sendResponse';
 import httpStatus from 'http-status';
 
-// const catchAsync = (asyncFn) => (req, res, next) => {
-//   asyncFn(req, res, next).catch(next);
-// };
-
 const catchAsync = (asyncFn: RequestHandler) => {
   return (req: Request, res: Response, next: NextFunction) => {
     Promise.resolve(asyncFn(req, res, next)).catch((err) => next(err));
