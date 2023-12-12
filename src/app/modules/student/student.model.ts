@@ -9,7 +9,6 @@ import {
   TUserName,
 } from './student.interface';
 
-
 // 2. Create a Schema corresponding to the document interface.
 
 const UserNameSchema = new Schema<TUserName>({
@@ -102,10 +101,10 @@ const studentSchema = new Schema<TStudent, StudentModel>(
       unique: true,
       ref: 'User',
     },
-    // password: {
-    //   type: String,
-    //   required: [true, 'password is required'],
-    // },
+    admissionSemester: {
+      type: Schema.Types.ObjectId,
+      ref: 'AcademicSemester',
+    },
     name: { type: UserNameSchema, required: [true, 'Name is required'] },
     gender: {
       type: String,
@@ -117,17 +116,12 @@ const studentSchema = new Schema<TStudent, StudentModel>(
     },
 
     dateofBirth: {
-      type: String,
-      required: [true, 'Date of birth is required'],
+      type: Date,
     },
     email: {
       type: String,
       required: [true, 'Email is required'],
       unique: true,
-      // validate: {
-      //   validator: (value: string) => validator.isEmail(value),
-      //   message: '{VALUE} is not valid email',
-      // },
     },
     contactNo: { type: String, required: [true, 'Contact number is required'] },
     emergenyContractNo: {
@@ -160,15 +154,6 @@ const studentSchema = new Schema<TStudent, StudentModel>(
     },
 
     profileImg: { type: String },
-    // isActive: {
-    //   type: String,
-    //   enum: {
-    //     values: ['active', 'inactive'],
-    //     message: 'Invalid isActive status. Please provide a valid status.',
-    //   },
-    //   default: 'active',
-    //   required: [true, 'isActive status is required'],
-    // },
     isDeleted: {
       type: Boolean,
       default: false,
@@ -181,8 +166,6 @@ const studentSchema = new Schema<TStudent, StudentModel>(
 studentSchema.virtual('FullName').get(function () {
   return `${this.name.firstName} ${this.name.middleName} ${this.name.lastName}`;
 });
-
-
 
 //query find middleware
 studentSchema.pre('find', function (next) {
