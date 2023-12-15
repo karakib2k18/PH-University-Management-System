@@ -1,4 +1,6 @@
+
 import { Schema, model } from 'mongoose';
+// import Error from '../../errors/Error';
 import { TAcademicDepartment } from './academicDepartment.interface';
 
 const academicDepartmentSchema = new Schema<TAcademicDepartment>(
@@ -18,8 +20,30 @@ const academicDepartmentSchema = new Schema<TAcademicDepartment>(
   },
 );
 
+academicDepartmentSchema.pre('save', async function (next) {
+  const isDepartmentExist = await AcademicDepartment.findOne({
+    name: this.name,
+  });
+
+  if (isDepartmentExist) {
+    throw new Error('This department is already exist!');
+  }
+
+  next();
+});
+
+academicDepartmentSchema.pre('findOneAndUpdate', async function (next) {
+  const query = this.getQuery();
+  const isDepartmentExist = await AcademicDepartment.findOne(query);
+
+  if (!isDepartmentExist) {
+    throw new Error('This department does not exist! ');
+  }
+
+  next();
+});
+
 export const AcademicDepartment = model<TAcademicDepartment>(
   'AcademicDepartment',
-  
   academicDepartmentSchema,
 );
