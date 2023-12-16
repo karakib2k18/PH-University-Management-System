@@ -194,25 +194,12 @@ studentSchema.pre('aggregate', function (next) {
   next();
 });
 
-//--------------------------------------------------
 // create cusitom static method
 
 studentSchema.statics.isUserExists = async function (id: string) {
   const existingUser = await Student.findOne({ id });
   return existingUser;
 };
-//-------------------------------------------------
-
-/*
-//--------------------------------------------------
-// create cusitom instance method
-
-studentSchema.methods.isUserExists = async function (id: string) {
-  const existingUser = await Student.findOne({ id });
-  return existingUser;
-};
-//-------------------------------------------------
-*/
 
 // 3. Create a Model.
 export const Student = model<TStudent, StudentModel>('Student', studentSchema);
