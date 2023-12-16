@@ -18,7 +18,6 @@ const getAllStudentsFromDB = async () => {
 };
 
 const getSingleStudentFromDB = async (id: string) => {
-  console.log(id);
   // const result = await Student.aggregate([{ $match: { id: id } }]);
   const result = await Student.findOne({ id })
     .populate('admissionSemester')
@@ -31,8 +30,8 @@ const getSingleStudentFromDB = async (id: string) => {
   return result;
 };
 
-const updateStudentIntoDB = async (id: string) => {
-  const result = await Student.findOneAndUpdate({ id });
+const updateStudentIntoDB = async (id: string, payload: Partial<TStudent>) => {
+  const result = await Student.findOneAndUpdate({ id }, payload);
   return result;
 };
 
