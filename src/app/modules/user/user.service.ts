@@ -10,7 +10,7 @@ import AppError from '../../errors/AppError';
 import httpStatus from 'http-status';
 
 const createStudentIntoDB = async (password: string, payload: TStudent) => {
-  console.log(payload);
+  // console.log(payload);
   //create a user object
   const userData: Partial<TUser> = {};
 
