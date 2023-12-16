@@ -34,12 +34,12 @@ export type TStudent = {
   email: string;
   avatar?: string;
   contactNo: string;
-  emergenyContractNo: string;
+  emergencyContactNo: string;
   bloodGroup?: 'A+' | 'A-' | 'B+' | 'B-' | 'AB+' | 'AB-' | 'O+' | 'O-';
   presentAddress: string;
   permanentAddress: string;
   guardian: TGurdian;
-  localguardin: TLocalGuardian;
+  localGuardian: TLocalGuardian;
   profileImg?: string;
   admissionSemester: Types.ObjectId;
   isDeleted: boolean;

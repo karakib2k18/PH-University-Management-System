@@ -124,7 +124,7 @@ const studentSchema = new Schema<TStudent, StudentModel>(
       unique: true,
     },
     contactNo: { type: String, required: [true, 'Contact number is required'] },
-    emergenyContractNo: {
+    emergencyContactNo: {
       type: String,
       required: [true, 'Emergency contact number is required'],
     },
@@ -148,7 +148,7 @@ const studentSchema = new Schema<TStudent, StudentModel>(
       type: GurdianSchema,
       required: [true, 'Guardian details are required'],
     },
-    localguardin: {
+    localGuardian: {
       type: LocalGuardianSchema,
       required: [true, 'Local guardian details are required'],
     },

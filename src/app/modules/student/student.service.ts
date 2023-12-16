@@ -4,8 +4,6 @@ import AppError from '../../errors/AppError';
 import httpStatus from 'http-status';
 import User from '../user/user.model';
 import { TStudent } from './student.interface';
-import { record, unknown } from 'zod';
-import { object } from 'joi';
 
 const getAllStudentsFromDB = async () => {
   const result = await Student.find()
@@ -50,15 +48,15 @@ const updateStudentIntoDB = async (id: string, payload: Partial<TStudent>) => {
     name.lastName = 'Abedin'
   */
 
-  if (name && Object.keys(name).length) {
-    for (const [key, value] of Object.entries(name)) {
-      modifiedUpdatedData[`name.${key}`] = value;
-    }
-  }
-
   if (guardian && Object.keys(guardian).length) {
     for (const [key, value] of Object.entries(guardian)) {
       modifiedUpdatedData[`guardian.${key}`] = value;
+    }
+  }
+
+  if (name && Object.keys(name).length) {
+    for (const [key, value] of Object.entries(name)) {
+      modifiedUpdatedData[`name.${key}`] = value;
     }
   }
 
@@ -67,7 +65,7 @@ const updateStudentIntoDB = async (id: string, payload: Partial<TStudent>) => {
       modifiedUpdatedData[`localGuardian.${key}`] = value;
     }
   }
-
+  // console.log(modifiedUpdatedData);
   const result = await Student.findOneAndUpdate({ id }, modifiedUpdatedData, {
     new: true,
     runValidators: true,
