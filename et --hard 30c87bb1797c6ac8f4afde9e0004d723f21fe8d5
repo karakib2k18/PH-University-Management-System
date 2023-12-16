@@ -1,0 +1,150 @@
+[33mcommit 1a59fb1102058416b3fa988448d596f4ef4e1798[m[33m ([m[1;36mHEAD -> [m[1;32mmain[m[33m, [m[1;31morigin/main[m[33m)[m
+Author: rakib <rakib@pop-os.localdomain>
+Date:   Sat Dec 16 18:45:02 2023 +0600
+
+    Revert to commit f97f30caf68312d02f6d1d2d57297f04711060b5
+
+[33mcommit 4c0b9abc924365ed06a4ead0b534d64c1116cf17[m
+Author: rakib <rakib@pop-os.localdomain>
+Date:   Sat Dec 16 18:28:08 2023 +0600
+
+    tesing
+
+[33mcommit f97f30caf68312d02f6d1d2d57297f04711060b5[m
+Author: rakib <rakib@pop-os.localdomain>
+Date:   Sat Dec 16 17:55:46 2023 +0600
+
+    for custom made id use findOne
+
+[33mcommit 30c87bb1797c6ac8f4afde9e0004d723f21fe8d5[m
+Author: rakib <rakib@pop-os.localdomain>
+Date:   Sat Dec 16 17:53:26 2023 +0600
+
+    Delete student using transaction & rollback
+
+[33mcommit 261c9f61edb9a31771b37f08a5fd74506e33af23[m
+Author: rakib <rakib@pop-os.localdomain>
+Date:   Sat Dec 16 16:34:48 2023 +0600
+
+    transaction & rollback
+     for create student
+
+[33mcommit 107b0e5553e383f440760ea75f7bf176f4b2f28a[m
+Author: rakib <rakib@pop-os.localdomain>
+Date:   Sat Dec 16 12:21:42 2023 +0600
+
+    populate referencing fields & implement AppError class
+
+[33mcommit 73ad8e0ba7faec38c00c3b657195cbf729238ed2[m
+Author: rakib <rakib@pop-os.localdomain>
+Date:   Sat Dec 16 04:31:15 2023 +0600
+
+    populate referencing
+
+[33mcommit d0a1f143805b40138919f26ccb8e2692dde2eacc[m
+Author: rakib <rakib@pop-os.localdomain>
+Date:   Sat Dec 16 04:20:14 2023 +0600
+
+    populate use
+
+[33mcommit 26bb4a828c1d9b40272c6eb70320315e0576e6e3[m
+Author: rakib <rakib@pop-os.localdomain>
+Date:   Sat Dec 16 03:56:13 2023 +0600
+
+    academic department done
+
+[33mcommit 56524addea454eb11a7775b93f8c30b239da6007[m
+Author: rakib <rakib@pop-os.localdomain>
+Date:   Sat Dec 16 03:52:30 2023 +0600
+
+    academic department routes
+
+[33mcommit 13c0c753f0c712eb2dc2b5f96e5a542c34ccca23[m
+Author: rakib <rakib@pop-os.localdomain>
+Date:   Sat Dec 16 03:41:38 2023 +0600
+
+    academic department controller
+
+[33mcommit 89dd95b12cf01866e214e037c9e4c1d1e0e977e8[m
+Author: rakib <rakib@pop-os.localdomain>
+Date:   Sat Dec 16 03:20:11 2023 +0600
+
+    academic department services add
+
+[33mcommit 81ca84c0216b037cc03d9fe4c081ba1d7c3144be[m
+Author: rakib <rakib@pop-os.localdomain>
+Date:   Sat Dec 16 03:18:23 2023 +0600
+
+    academic department validation add
+
+[33mcommit bc2dda034baac273aa497e324d9565906e49b51d[m
+Author: rakib <rakib@pop-os.localdomain>
+Date:   Sat Dec 16 03:04:49 2023 +0600
+
+    academic department interface done
+
+[33mcommit 406e13eafcfb969224e17c734c3b3504fa0f9e8c[m
+Author: rakib <rakib@pop-os.localdomain>
+Date:   Sat Dec 16 03:01:18 2023 +0600
+
+    academicFaculty all function created
+
+[33mcommit de4bc1b8883b8f1062e2251295a4293af5a7d337[m
+Author: rakib <rakib@pop-os.localdomain>
+Date:   Wed Dec 13 03:24:16 2023 +0600
+
+    complete academic semester all things, like create,get, update, then add automatic student id generator, create utils files,and also re editeed some bug to fixed
+
+[33mcommit 00b9c204d091ae42ac09f57a44021732f978b993[m
+Author: rakib <rakib@pop-os.localdomain>
+Date:   Mon Dec 11 22:32:34 2023 +0600
+
+    Implement validateRequest Middleware
+
+[33mcommit d5fbdaa4512f4cacb15ace15ef8133374d6c39c6[m
+Author: rakib <rakib@pop-os.localdomain>
+Date:   Mon Dec 11 18:35:16 2023 +0600
+
+     Implement a shenabahini middleware
+
+[33mcommit 2f7e02dbee40d77a49734755b9538f9459bb8c88[m
+Author: rakib <rakib@pop-os.localdomain>
+Date:   Mon Dec 11 14:02:15 2023 +0600
+
+    Avoid try-catch repetition , use catchAsync
+
+[33mcommit e6fe2e7722458d9a917fbdf17d4692b0b86aa39c[m
+Author: rakib <rakib@pop-os.localdomain>
+Date:   Mon Dec 11 13:51:16 2023 +0600
+
+    Avoid try-catch repetition , use catchAsync
+
+[33mcommit bc4c78e78d0c4e7e5f506aa513a604e92cef7c0c[m
+Author: rakib <rakib@pop-os.localdomain>
+Date:   Mon Dec 11 13:19:46 2023 +0600
+
+    RequestHandler add
+
+[33mcommit e7a251cdaeaf243c8b01dba8c56c29dafc0b080d[m
+Author: rakib <rakib@pop-os.localdomain>
+Date:   Mon Dec 11 01:57:08 2023 +0600
+
+    readme file edit
+
+[33mcommit 5939fac0d57070d64248e4e70815a6a347015980[m
+Author: rakib <rakib@pop-os.localdomain>
+Date:   Mon Dec 11 01:52:39 2023 +0600
+
+    Building PH University Management System Part-1
+
+[33mcommit e24b4977224624e1e397ac9fca09c5db115ca6a2[m
+Author: rakib <rakib@pop-os.localdomain>
+Date:   Mon Dec 11 01:52:03 2023 +0600
+
+    Building PH University Management System Part-1
+
+[33mcommit b6c6a40c03e3782cf807b56148a1ac12e3bc9e28[m
+Author: rakib <rakib@pop-os.localdomain>
+Date:   Sun Dec 10 16:52:04 2023 +0600
+
+    first commit for PH Universtiy projects
