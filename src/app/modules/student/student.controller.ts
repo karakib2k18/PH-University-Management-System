@@ -13,31 +13,32 @@ const getAllStudents = catchAsync(async (req, res) => {
   });
 });
 
-const getSingleStudents = catchAsync(async (req, res) => {
-  const { studentID } = req.params;
-  const result = await StudentServices.getSingleStudentFromDB(studentID);
+const getSingleStudent = catchAsync(async (req, res) => {
+  const { studentId } = req.params;
+  console.log(req.params);
+  const result = await StudentServices.getSingleStudentFromDB(studentId);
 
   sendResponse(res, {
     statusCode: httpStatus.OK,
     success: true,
-    message: 'getSingleStudents is are retrived successgully',
+    message: 'getSingleStudent is are retrived successgully',
     data: result,
   });
 });
-const deleteStudents = catchAsync(async (req, res) => {
-  const { studentID } = req.params;
-  const result = await StudentServices.deleteStudentFromDB(studentID);
+const deleteStudent = catchAsync(async (req, res) => {
+  const { studentId } = req.params;
+  const result = await StudentServices.deleteStudentFromDB(studentId);
 
   sendResponse(res, {
     statusCode: httpStatus.OK,
     success: true,
-    message: 'getSingleStudents is DELETED successfully',
+    message: 'getSingleStudent is DELETED successfully',
     data: result,
   });
 });
 
-export const studentController = {
+export const StudentControllers = {
   getAllStudents,
-  getSingleStudents,
-  deleteStudents,
+  getSingleStudent,
+  deleteStudent,
 };
