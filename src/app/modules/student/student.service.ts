@@ -5,8 +5,27 @@ import httpStatus from 'http-status';
 import User from '../user/user.model';
 import { TStudent } from './student.interface';
 
-const getAllStudentsFromDB = async () => {
-  const result = await Student.find()
+const getAllStudentsFromDB = async (query: Record<string, string>) => {
+  // console.log(query);
+
+  const queryObj = { ...query }; //copy
+
+  let searchTerm = '';
+  if (query?.searchTerm) {
+    searchTerm = query?.searchTerm;
+  }
+
+  const searchQuery = Student.find({
+    $or: ['email', 'name.firstName', 'presentAddress'].map((field) => ({
+      [field]: { $regex: searchTerm, $options: 'i' },
+    })),
+  });
+
+  const excludeFields = ['searchTerm', 'sort', 'limit', 'page', 'fields'];
+  excludeFields.forEach((el) => delete queryObj[el]); // DELETING THE FIELDS SO THAT IT CAN'T MATCH OR FILTER EXACTLY
+
+  const filterQuery = searchQuery
+    .find(queryObj)
     .populate('admissionSemester')
     .populate({
       path: 'academicDepartment',
@@ -14,7 +33,30 @@ const getAllStudentsFromDB = async () => {
         path: 'academicFaculty',
       },
     });
-  return result;
+
+  // SORTING FUNCTIONALITY:
+
+  let sort = '-createdAt'; // SET DEFAULT VALUE
+
+  // IF sort  IS GIVEN SET IT
+  if (query.sort) {
+    sort = query.sort as string;
+  }
+  console.log(filterQuery.sort(sort));
+  const sortQuery = filterQuery.sort(sort);
+
+  // PAGINATION FUNCTIONALITY:
+
+  let limit = 1; // SET DEFAULT VALUE FOR LIMIT
+
+  // IF limit IS GIVEN SET IT
+
+  if (query.limit) {
+    limit = Number(query.limit);
+  }
+  const limitQuery = sortQuery.limit(limit);
+
+  return limitQuery;
 };
 
 const getSingleStudentFromDB = async (id: string) => {
