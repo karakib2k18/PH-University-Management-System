@@ -1,4 +1,6 @@
+/* eslint-disable no-undef */
 /* eslint-disable no-unused-vars */
+/* eslint-disable @typescript-eslint/no-unused-vars */
 /* eslint-disable @typescript-eslint/no-explicit-any */
 import express, { Application, Response, Request } from 'express';
 import cors from 'cors';
@@ -14,8 +16,9 @@ app.use(cors());
 // all application routes
 app.use('/api/v1', router);
 
-const test = (req: Request, res: Response) => {
-  res.send('Hello PH UNIVERSTIY');
+const test = async (req: Request, res: Response) => {
+  Promise.reject();
+  // res.send('Hello PH UNIVERSTIY');
 };
 
 app.get('/', test);
