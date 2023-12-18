@@ -7,9 +7,8 @@ import { TStudent } from './student.interface';
 
 // eslint-disable-next-line @typescript-eslint/no-explicit-any
 const getAllStudentsFromDB = async (query: Record<string, any>) => {
-  // console.log(query);
-
   const queryObj = { ...query }; //copy
+  // console.log(queryObj);
 
   let searchTerm = '';
   if (query?.searchTerm) {
@@ -43,7 +42,6 @@ const getAllStudentsFromDB = async (query: Record<string, any>) => {
   if (query.sort) {
     sort = query.sort as string;
   }
-  console.log(filterQuery.sort(sort));
   const sortQuery = filterQuery.sort(sort);
 
   // PAGINATION FUNCTIONALITY:
@@ -67,7 +65,23 @@ const getAllStudentsFromDB = async (query: Record<string, any>) => {
   const paginateQuery = sortQuery.skip(skip);
   const limitQuery = paginateQuery.limit(limit);
 
-  return limitQuery;
+  // FIELDS LIMITING FUNCTIONALITY:
+
+  // HOW OUR FORMAT SHOULD BE FOR PARTIAL MATCH
+
+  // fields: 'name,email'; // WE ARE ACCEPTING FROM REQUEST
+  // fields: 'name email'; // HOW IT SHOULD BE
+
+  let fields = '-__v'; // SET DEFAULT VALUE
+
+  if (query.fields) {
+    fields = (query.fields as string).split(',').join(' ');
+    console.log(fields);
+  }
+
+  const fieldQuery = await limitQuery.select(fields);
+
+  return fieldQuery;
 };
 
 const getSingleStudentFromDB = async (id: string) => {
