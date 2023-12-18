@@ -5,7 +5,8 @@ import httpStatus from 'http-status';
 import User from '../user/user.model';
 import { TStudent } from './student.interface';
 
-const getAllStudentsFromDB = async (query: Record<string, string>) => {
+// eslint-disable-next-line @typescript-eslint/no-explicit-any
+const getAllStudentsFromDB = async (query: Record<string, any>) => {
   // console.log(query);
 
   const queryObj = { ...query }; //copy
@@ -48,13 +49,23 @@ const getAllStudentsFromDB = async (query: Record<string, string>) => {
   // PAGINATION FUNCTIONALITY:
 
   let limit = 1; // SET DEFAULT VALUE FOR LIMIT
+  // IF page IS GIVEN SET IT
+  let page = 1;
+  let skip = 0;
 
   // IF limit IS GIVEN SET IT
 
   if (query.limit) {
     limit = Number(query.limit);
   }
-  const limitQuery = sortQuery.limit(limit);
+
+  if (query.page) {
+    page = Number(query.page);
+    skip = (page - 1) * limit;
+  }
+
+  const paginateQuery = sortQuery.skip(skip);
+  const limitQuery = paginateQuery.limit(limit);
 
   return limitQuery;
 };
